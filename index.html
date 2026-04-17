@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rust Koans</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="stage" role="application" aria-label="Rust Koans presentation">
+      <section class="deck" aria-live="polite">
+        <header class="deck-header">
+          <p class="eyebrow">The Way of Rust</p>
+          <h1>Rust Koans</h1>
+          <p class="subtitle">Contemplate. Compile. Refine.</p>
+        </header>
+
+        <article class="slide" id="slide" tabindex="0">
+          <p class="slide-number" id="slide-number">Koan 1 / 10</p>
+          <h2 id="koan-title"></h2>
+          <p id="koan-question" class="question"></p>
+          <pre id="koan-code" class="code"></pre>
+          <p id="koan-reflection" class="reflection"></p>
+        </article>
+
+        <footer class="controls">
+          <div class="buttons">
+            <button id="prev-btn" aria-label="Previous koan">◀ Prev</button>
+            <button id="next-btn" aria-label="Next koan">Next ▶</button>
+            <button id="fullscreen-btn" aria-label="Toggle fullscreen">⤢ Fullscreen</button>
+          </div>
+          <p class="hint">Use ← / →, Space, Home, End</p>
+          <div class="progress" aria-hidden="true">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </footer>
+      </section>
+    </main>
+
+    <section class="hero hero-bottom" aria-label="Rust Koans artwork">
+      <img src="koans-bg.png" alt="A monk on a crab with a laptop, teaching a student with a laptop" />
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
