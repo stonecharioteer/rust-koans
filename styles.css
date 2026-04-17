@@ -748,10 +748,19 @@ body::before {
   .dialogue-master { padding-right: 1rem; }
   .dialogue-novice { padding-left: 1rem; }
 
+  .nav-pips {
+    gap: 0;
+  }
+
   .pip {
-    width: 26px;
-    height: 26px;
-    font-size: 0.75rem;
+    display: none;
+  }
+
+  .pip.active {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
   }
 
   .dialogue-avatar {
@@ -824,11 +833,6 @@ body::before {
     padding: 0.35rem 0.65rem;
   }
 
-  .pip {
-    width: 24px;
-    height: 24px;
-    font-size: 0.7rem;
-  }
 }
 
 /* ═══════════════════════════════════════════════
