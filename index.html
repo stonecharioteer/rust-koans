@@ -4,42 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rust Koans</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="stage" role="application" aria-label="Rust Koans presentation">
-      <section class="deck" aria-live="polite">
-        <header class="deck-header">
-          <p class="eyebrow">The Way of Rust</p>
-          <h1>Rust Koans</h1>
-          <p class="subtitle">Contemplate. Compile. Refine.</p>
+
+    <div class="scroll-frame intro" role="application" aria-label="Rust Koans presentation">
+
+      <!-- Left panel: ink-wash painting -->
+      <aside class="scroll-painting" aria-label="Rust Koans artwork">
+        <div class="painting-inner">
+          <picture>
+            <source srcset="koans-bg.webp" type="image/webp" />
+            <img src="koans-bg.png" alt="A Zen master sitting atop a giant crab, teaching a student — both hold laptops" />
+          </picture>
+        </div>
+        <div class="painting-caption">道 The Way of Rust</div>
+        <div class="qr-badge">
+          <img src="qr.webp" alt="QR code linking to rust-koans.stonecharioteer.com" />
+          <span>rust-koans.stonecharioteer.com</span>
+        </div>
+
+        <!-- Title overlay shown only during intro -->
+        <div class="intro-overlay">
+          <div class="intro-card">
+            <p class="intro-eyebrow">The Way of Rust</p>
+            <h1 class="intro-title">Rust Koans</h1>
+            <p class="intro-subtitle">Contemplate. Compile. Refine.</p>
+            <p class="intro-prompt">Press any key or tap to begin</p>
+            <div class="intro-qr">
+              <img src="qr.webp" alt="QR code linking to rust-koans.stonecharioteer.com" />
+              <span class="intro-url">stonecharioteer.com</span>
+            </div>
+            <nav class="intro-links">
+              <a href="https://stonecharioteer.com" aria-label="Website" title="stonecharioteer.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></a>
+              <a href="https://x.com/stonecharioteer" aria-label="X / Twitter" title="@stonecharioteer"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+              <a href="mailto:mail@stonecharioteer.com" aria-label="Email" title="mail@stonecharioteer.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+              <a href="https://github.com/stonecharioteer/rust-koans" aria-label="GitHub" title="stonecharioteer/rust-koans"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+            </nav>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Vertical seam between scroll panels -->
+      <div class="scroll-seam" aria-hidden="true"></div>
+
+      <!-- Right panel: koan text -->
+      <main class="scroll-text">
+        <header class="koan-header">
+          <p class="koan-number" id="slide-number">一 Koan 1 of 10</p>
+          <div class="header-rule" aria-hidden="true"></div>
         </header>
 
-        <article class="slide" id="slide" tabindex="0">
-          <p class="slide-number" id="slide-number">Koan 1 / 10</p>
-          <h2 id="koan-title"></h2>
-          <p id="koan-question" class="question"></p>
-          <pre id="koan-code" class="code"></pre>
-          <p id="koan-reflection" class="reflection"></p>
+        <article class="koan-body" id="slide" tabindex="0" aria-live="polite">
+          <h2 id="koan-title" class="koan-title"></h2>
+          <div class="koan-dialogue" id="koan-question"></div>
+          <pre id="koan-code" class="koan-code"></pre>
+          <p id="koan-reflection" class="koan-reflection"></p>
         </article>
 
-        <footer class="controls">
-          <div class="buttons">
-            <button id="prev-btn" aria-label="Previous koan">◀ Prev</button>
-            <button id="next-btn" aria-label="Next koan">Next ▶</button>
-            <button id="fullscreen-btn" aria-label="Toggle fullscreen">⤢ Fullscreen</button>
+        <footer class="koan-footer">
+          <div class="progress-track" aria-hidden="true">
+            <div class="progress-ink" id="progress-bar"></div>
           </div>
-          <p class="hint">Use ← / →, Space, Home, End</p>
-          <div class="progress" aria-hidden="true">
-            <div class="progress-bar" id="progress-bar"></div>
-          </div>
+          <nav class="nav-controls">
+            <button id="prev-btn" class="nav-btn" aria-label="Previous koan">
+              <span class="nav-arrow">←</span> Prev
+            </button>
+            <div class="nav-pips" id="nav-pips" aria-hidden="true"></div>
+            <button id="next-btn" class="nav-btn" aria-label="Next koan">
+              Next <span class="nav-arrow">→</span>
+            </button>
+          </nav>
+          <p class="nav-hint">Arrow keys · Space · Home / End</p>
+          <nav class="footer-links">
+            <a href="https://stonecharioteer.com" aria-label="Website" title="stonecharioteer.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="link-label">stonecharioteer.com</span></a>
+            <a href="https://x.com/stonecharioteer" aria-label="X / Twitter" title="@stonecharioteer"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="mailto:mail@stonecharioteer.com" aria-label="Email" title="mail@stonecharioteer.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+            <a href="https://github.com/stonecharioteer/rust-koans" aria-label="GitHub" title="stonecharioteer/rust-koans"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+          </nav>
         </footer>
-      </section>
-    </main>
+      </main>
 
-    <section class="hero hero-bottom" aria-label="Rust Koans artwork">
-      <img src="koans-bg.png" alt="A monk on a crab with a laptop, teaching a student with a laptop" />
-    </section>
+    </div>
 
     <script src="app.js"></script>
   </body>
