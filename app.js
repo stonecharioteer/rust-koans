@@ -216,6 +216,8 @@ const prevBtn = document.getElementById("prev-btn");
 const nextBtn = document.getElementById("next-btn");
 const slideEl = document.getElementById("slide");
 const pipsEl = document.getElementById("nav-pips");
+const pickerOverlay = document.getElementById("page-picker");
+const pickerGrid = document.getElementById("page-picker-grid");
 
 const frame = document.querySelector(".scroll-frame");
 let isIntro = !location.hash;
@@ -364,6 +366,7 @@ function goTo(nextIndex) {
   const bounded = Math.max(0, Math.min(koans.length - 1, nextIndex));
   if (bounded === index) return;
 
+  pipsEl.classList.remove("expanded");
   slideEl.classList.add("fade-out");
   setTimeout(() => {
     index = bounded;
@@ -452,10 +455,51 @@ function buildPips() {
     pip.className = "pip";
     pip.textContent = i + 1;
     pip.setAttribute("aria-label", `Go to Koan ${i + 1}`);
-    pip.addEventListener("click", () => goTo(i));
+    pip.addEventListener("click", (e) => {
+      // On mobile: the only visible pip is the active one — open the picker
+      if (i === index && window.innerWidth <= 720) {
+        e.stopPropagation();
+        openPagePicker();
+        return;
+      }
+      goTo(i);
+    });
     pipsEl.appendChild(pip);
   }
+  buildPickerGrid();
 }
+
+function buildPickerGrid() {
+  while (pickerGrid.firstChild) {
+    pickerGrid.removeChild(pickerGrid.firstChild);
+  }
+  for (let i = 0; i < koans.length; i++) {
+    const btn = document.createElement("button");
+    btn.className = "page-picker-btn";
+    btn.textContent = i + 1;
+    btn.addEventListener("click", () => {
+      closePagePicker();
+      goTo(i);
+    });
+    pickerGrid.appendChild(btn);
+  }
+}
+
+function openPagePicker() {
+  // Mark current koan
+  const btns = pickerGrid.querySelectorAll(".page-picker-btn");
+  btns.forEach((btn, i) => btn.classList.toggle("current", i === index));
+  pickerOverlay.classList.add("open");
+}
+
+function closePagePicker() {
+  pickerOverlay.classList.remove("open");
+}
+
+// Tap the dimmed background to close
+pickerOverlay.addEventListener("click", (e) => {
+  if (e.target === pickerOverlay) closePagePicker();
+});
 
 function toggleFullscreen() {
   if (!document.fullscreenElement) {
